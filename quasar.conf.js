@@ -20,42 +20,42 @@ module.exports = function (ctx) {
       // 'eva-icons'
     ],
 
-    // framework: 'all', // --- includes everything; for dev only!
-    framework: {
-      components: [
-        'QLayout',
-        'QHeader',
-        'QDrawer',
-        'QPageContainer',
-        'QPage',
-        'QToolbar',
-        'QToolbarTitle',
-        'QBtn',
-        'QIcon',
-        'QList',
-        'QItem',
-        'QItemSection',
-        'QItemLabel'
-      ],
+    framework: 'all', // --- includes everything; for dev only!
+    // framework: {
+    //   components: [
+    //     'QLayout',
+    //     'QHeader',
+    //     'QDrawer',
+    //     'QPageContainer',
+    //     'QPage',
+    //     'QToolbar',
+    //     'QToolbarTitle',
+    //     'QBtn',
+    //     'QIcon',
+    //     'QList',
+    //     'QItem',
+    //     'QItemSection',
+    //     'QItemLabel'
+    //   ],
 
-      directives: [
-        'Ripple'
-      ],
+    //   directives: [
+    //     'Ripple'
+    //   ],
 
-      // Quasar plugins
-      plugins: [
-        'Notify'
-      ]
+    //   // Quasar plugins
+    //   plugins: [
+    //     'Notify'
+    //   ]
 
-      // iconSet: 'ionicons-v4'
-      // lang: 'de' // Quasar language
-    },
+    //   // iconSet: 'ionicons-v4'
+    //   // lang: 'de' // Quasar language
+    // },
 
     supportIE: false,
 
     build: {
       scopeHoisting: true,
-      // vueRouterMode: 'history',
+      vueRouterMode: 'history',
       // vueCompiler: true,
       // gzip: true,
       // analyze: true,
@@ -65,23 +65,23 @@ module.exports = function (ctx) {
           enforce: 'pre',
           test: /\.(js|vue)$/,
           loader: 'eslint-loader',
-          exclude: /node_modules/,
-          options: {
-            cache: true
-          }
+          exclude: /node_modules/
+          // options: {
+          //   cache: true
+          // }
         })
       }
     },
 
     devServer: {
       // https: true,
-      // port: 8080,
+      port: ctx.mode.spa ? 8080 : (ctx.mode.cordova ? 8080 : 8082),
       open: true // opens browser window automatically
     },
 
     // animations: 'all' --- includes all animations
-    animations: [],
-
+    animations: 'all',
+    // [],
     ssr: {
       pwa: false
     },
